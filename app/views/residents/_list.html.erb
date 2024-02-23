@@ -1,0 +1,7 @@
+<ul class="ml-4 mt-4" id="<%= id %>">
+  <% residents.each do |resident| %>
+    <li class="group <%= highlight_if_equal(resident, @resident) %>">
+      <%= render 'resident', resident: resident %>
+    </li>
+  <% end %>
+</ul>

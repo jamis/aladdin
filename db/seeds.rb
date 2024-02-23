@@ -1,7 +1,8 @@
-john = Resident.create!(name: 'John K', room: '112')
-cheryl = Resident.create!(name: 'Cheryl J', room: '217')
-ralph = Resident.create!(name: 'Ralph B', room: '143')
-janice = Resident.create!(name: 'Janice T', room: '222')
+humphrey = Resident.create!(name: 'Humphrey B', room: '112')
+sophia = Resident.create!(name: 'Sophia L', room: '217')
+danny = Resident.create!(name: 'Danny K', room: '143')
+bing = Resident.create!(name: 'Bing C', room: '222')
+myrna = Resident.create!(name: 'Myrna L', room: '111', current: false)
 
 wttw = Activity.create!(name: 'Welcome to the Week', abbv: 'WttW')
 drum = Activity.create!(name: 'Drumming', abbv: 'Drum')
@@ -22,54 +23,54 @@ mingle_0212 = mingle.sessions.create(occurred_on: '2024-02-12', goals: [ social 
 mingle_0219 = mingle.sessions.create(occurred_on: '2024-02-19', goals: [ social ])
 
 wttw_0212.tap do |sess|
-  sess.engagements.create(resident: john, invited: true)
-  sess.engagements.create(resident: cheryl, invited: true, attended: true)
-  sess.engagements.create(resident: ralph, attended: true)
-  sess.engagements.create(resident: janice, invited: true, attended: true)
+  sess.engagements.create(resident: humphrey, invited: true)
+  sess.engagements.create(resident: sophia, invited: true, attended: true)
+  sess.engagements.create(resident: danny, attended: true)
+  sess.engagements.create(resident: bing, invited: true, attended: true)
 end
 
 wttw_0219.tap do |sess|
-  sess.engagements.create(resident: john, invited: true, attended: true)
-  sess.engagements.create(resident: cheryl, invited: true, attended: true, notes: 'they fell asleep')
-  sess.engagements.create(resident: ralph, invited: true)
-  sess.engagements.create(resident: janice, invited: true, attended: true)
+  sess.engagements.create(resident: humphrey, invited: true, attended: true)
+  sess.engagements.create(resident: sophia, invited: true, attended: true, notes: 'they fell asleep')
+  sess.engagements.create(resident: danny, invited: true)
+  sess.engagements.create(resident: bing, invited: true, attended: true)
 end
 
 drum_0213.tap do |sess|
-  sess.engagements.create(resident: john, invited: true, attended: true)
-  sess.engagements.create(resident: cheryl, invited: true)
-  sess.engagements.create(resident: ralph, attended: true)
-  sess.engagements.create(resident: janice, invited: true, attended: true)
+  sess.engagements.create(resident: humphrey, invited: true, attended: true)
+  sess.engagements.create(resident: sophia, invited: true)
+  sess.engagements.create(resident: danny, attended: true)
+  sess.engagements.create(resident: bing, invited: true, attended: true)
 end
 
 drum_0220.tap do |sess|
-  sess.engagements.create(resident: john, invited: true, attended: true)
-  sess.engagements.create(resident: cheryl, invited: true)
-  sess.engagements.create(resident: ralph, attended: true)
-  sess.engagements.create(resident: janice, invited: true, attended: true)
+  sess.engagements.create(resident: humphrey, invited: true, attended: true)
+  sess.engagements.create(resident: sophia, invited: true)
+  sess.engagements.create(resident: danny, attended: true)
+  sess.engagements.create(resident: bing, invited: true, attended: true)
 end
 
 kclub_0209.tap do |sess|
-  sess.engagements.create(resident: john, invited: true)
-  sess.engagements.create(resident: cheryl, invited: true, attended: true)
-  sess.engagements.create(resident: ralph, invited: true, attended: true)
+  sess.engagements.create(resident: humphrey, invited: true)
+  sess.engagements.create(resident: sophia, invited: true, attended: true)
+  sess.engagements.create(resident: danny, invited: true, attended: true)
 end
 
 kclub_0216.tap do |sess|
-  sess.engagements.create(resident: john, invited: true, attended: true)
-  sess.engagements.create(resident: cheryl, invited: true, attended: true)
-  sess.engagements.create(resident: ralph, invited: true, attended: true)
-  sess.engagements.create(resident: janice, invited: true)
+  sess.engagements.create(resident: humphrey, invited: true, attended: true)
+  sess.engagements.create(resident: sophia, invited: true, attended: true)
+  sess.engagements.create(resident: danny, invited: true, attended: true)
+  sess.engagements.create(resident: bing, invited: true)
 end
 
 mingle_0212.tap do |sess|
-  sess.engagements.create(resident: cheryl, invited: true)
-  sess.engagements.create(resident: ralph, invited: true, attended: true)
-  sess.engagements.create(resident: janice, invited: true)
+  sess.engagements.create(resident: sophia, invited: true)
+  sess.engagements.create(resident: danny, invited: true, attended: true)
+  sess.engagements.create(resident: bing, invited: true)
 end
 
 mingle_0219.tap do |sess|
-  sess.engagements.create(resident: john, invited: true)
-  sess.engagements.create(resident: cheryl, invited: true, attended: true)
-  sess.engagements.create(resident: ralph, invited: true, attended: true)
+  sess.engagements.create(resident: humphrey, invited: true)
+  sess.engagements.create(resident: sophia, invited: true, attended: true)
+  sess.engagements.create(resident: danny, invited: true, attended: true)
 end

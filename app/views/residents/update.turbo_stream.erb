@@ -1,0 +1,17 @@
+<% if @resident.current_previously_changed? %>
+  <turbo-stream action="replace" target="<%= @resident.current? ? 'formerResidentList' : 'residentList' %>">
+    <template>
+      <%= render 'list',
+                 residents: @resident.current? ? @former : @residents,
+                 id: @resident.current? ? 'formerResidentList' : 'residentList' %>
+    </template>
+  </turbo-stream>
+<% end %>
+
+<turbo-stream action="replace" target="<%= @resident.current? ? 'residentList' : 'formerResidentList' %>">
+  <template>
+    <%= render 'list',
+               residents: @resident.current? ? @residents : @former,
+               id: @resident.current? ? 'residentList' : 'formerResidentList' %>
+  </template>
+</turbo-stream>

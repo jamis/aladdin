@@ -1,0 +1,14 @@
+.yellow-fade {
+  animation-duration: 1s;
+  animation-name: yellowFade;
+}
+
+@keyFrames yellowFade {
+  from {
+    background-color: yellow;
+  }
+
+  to {
+    background-color: transparent;
+  }
+}

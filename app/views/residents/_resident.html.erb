@@ -1,0 +1,9 @@
+<%= turbo_frame_tag dom_id(resident) do %>
+  <% if resident.current? %>
+    #<%= resident.room %> :
+  <% end %>
+  <%= resident.name %>
+  <span class="ml-2 invisible group-hover:visible">
+    [ <%= link_to 'edit', edit_resident_path(resident), class: "text-blue-600 underline" %> ]
+  </span>
+<% end %>
