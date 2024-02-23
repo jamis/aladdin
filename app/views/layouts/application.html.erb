@@ -12,6 +12,11 @@
   </head>
 
   <body>
+    <header class="fixed top-0 w-full border-b px-4 py-1 flex flex-row gap-4">
+      <%= link_to 'Residents', residents_path, class: 'text-blue-600 underline' %>
+      <%= link_to 'Activities', activities_path, class: 'text-blue-600 underline' %>
+    </header>
+
     <main class="container mx-auto mt-28 px-5 flex flex-col">
       <%= yield %>
     </main>

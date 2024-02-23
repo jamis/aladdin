@@ -1,1 +1,10 @@
-<%= render 'resident', resident: @resident %>
+<h1 class="text-2xl font-bold"><%= @resident.name %> (#<%= @resident.room %>)</h1>
+<% unless @resident.current? %>
+  <div class="italic text-red-600 text-sm"><%= @resident.name %> is a former resident.</div>
+<% end %>
+
+
+<div class="mt-8">
+  We'll show a calendar here with all the sessions for this
+  resident.
+</div>

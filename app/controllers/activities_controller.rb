@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
   end
 
   def destroy
-    @activity.destroy
+    @activity.destroy if @activity.deletable?
   end
 
   private

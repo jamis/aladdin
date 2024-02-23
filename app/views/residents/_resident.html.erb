@@ -2,7 +2,7 @@
   <% if resident.current? %>
     #<%= resident.room %> :
   <% end %>
-  <%= resident.name %>
+  <%= link_to resident.name, resident_path(resident), class: "text-blue-600 underline", data: { turbo_frame: "_top" } %>
   <span class="ml-2 invisible group-hover:visible">
     [ <%= link_to 'edit', edit_resident_path(resident), class: "text-blue-600 underline" %> ]
   </span>
