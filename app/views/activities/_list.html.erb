@@ -1,0 +1,7 @@
+<ul class="ml-4 mt-4" id="<%= id %>">
+  <% activities.each do |activity| %>
+    <li class="group <%= highlight_if_equal(activity, @activity) %>" id="<%= dom_id(activity, :container) %>">
+      <%= render 'activity', activity: activity %>
+    </li>
+  <% end %>
+</ul>

@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_134903) do
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
     t.string "abbv", null: false
+    t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

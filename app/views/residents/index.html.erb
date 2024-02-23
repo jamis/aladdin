@@ -3,8 +3,7 @@
 
 <%= render 'list', residents: @residents, id: 'residentList' %>
 
-<div data-controller="show-hide" class="mt-4 <%= @former.any? ? '' : 'hidden' %>">
-<% if @former.any? %>
+<div data-controller="show-hide" class="mt-4">
   <div><a href="#" class="text-blue-600 underline" data-action="show-hide#toggle:prevent" data-show-hide-target="control">Show all former residents</a></div>
   <div class="hidden" data-show-hide-target="content">
     <div class="flex flex-row items-baseline">
@@ -14,5 +13,4 @@
 
     <%= render 'list', residents: @former, id: 'formerResidentList' %>
   </div>
-<% end %>
 </div>

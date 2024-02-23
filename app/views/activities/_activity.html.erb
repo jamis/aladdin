@@ -1,0 +1,13 @@
+<%= turbo_frame_tag dom_id(activity) do %>
+  <%= link_to activity.name, activity_path(activity), class: "text-blue-600 underline", data: { turbo_frame: "_top" } %> (<%= activity.abbv %>)
+  <span class="ml-2 invisible group-hover:visible">
+    [
+      <%= link_to 'edit', edit_activity_path(activity), class: "text-blue-600 underline" %>
+      <% if activity.deletable? %>
+        <%= form_with model: activity, method: :delete, class: "inline" do |f| %>
+          | <%= f.submit 'delete', class: "text-red-600 underline" %>
+        <% end %>
+      <% end %>
+    ]
+  </span>
+<% end %>

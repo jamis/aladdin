@@ -1,0 +1,16 @@
+<h1 class="text-2xl font-bold">Activities</h1>
+<div><%= link_to "Add a new activity", new_activity_path, data: { turbo_stream: true }, class: "text-blue-600 underline" %></div>
+
+<%= render 'list', activities: @activities, id: 'activityList' %>
+
+<div data-controller="show-hide" class="mt-4">
+  <div><a href="#" class="text-blue-600 underline" data-action="show-hide#toggle:prevent" data-show-hide-target="control">Show all archived activities</a></div>
+  <div class="hidden" data-show-hide-target="content">
+    <div class="flex flex-row items-baseline">
+      <h2 class="text-lg font-bold">Archived Activities</h2>
+      <span class="ml-2">[ <a href='#' class="text-blue-600 underline" data-action="show-hide#toggle:prevent">hide</a> ]</span>
+    </div>
+
+    <%= render 'list', activities: @archived, id: 'archivedActivityList' %>
+  </div>
+</div>

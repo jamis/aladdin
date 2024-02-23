@@ -1,0 +1,17 @@
+<% if @activity.archived_at_previously_changed? %>
+  <turbo-stream action="replace" target="<%= @activity.active? ? 'archivedActivityList' : 'activityList' %>">
+    <template>
+      <%= render 'list',
+                 activities: @activity.active? ? @archived : @activities,
+                 id: @activity.active? ? 'archivedActivityList' : 'activityList' %>
+    </template>
+  </turbo-stream>
+<% end %>
+
+<turbo-stream action="replace" target="<%= @activity.active? ? 'activityList' : 'archivedActivityList' %>">
+  <template>
+    <%= render 'list',
+               activities: @activity.active? ? @activities : @archived,
+               id: @activity.active? ? 'activityList' : 'archivedActivityList' %>
+  </template>
+</turbo-stream>
