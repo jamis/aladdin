@@ -4,6 +4,6 @@
     <%= f.text_field :abbv, placeholder: 'Abbv.', class: 'w-16 px-2 py-1 rounded', autofocus: true %>
     <span class="mx-2"><%= f.check_box :archived %> Archived</span>
     <%= f.submit 'Save', class: "ml-2 border border-green-600 bg-green-100 hover:bg-green-200 cursor-pointer px-2 py-1 rounded" %>
-    or <%= link_to "cancel", activity_path(@activity), class: 'text-red-600 underline' %>
+    or <%= link_to "cancel", row_activity_path(@activity), class: 'text-red-600 underline' %>
   <% end %>
 <% end %>

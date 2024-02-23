@@ -1,5 +1,5 @@
 class ResidentsController < ApplicationController
-  before_action :find_resident, only: %i[ show edit update ]
+  before_action :find_resident, only: %i[ show row edit update ]
 
   def index
     @residents = resident_list

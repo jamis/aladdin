@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_action :find_activity, only: %i[ show edit update destroy ]
+  before_action :find_activity, only: %i[ show row edit update destroy ]
 
   def index
     @activities = activity_list
