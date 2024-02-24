@@ -1,5 +1,8 @@
 class ActivitiesController < ApplicationController
+  include Calendrical
+
   before_action :find_activity, only: %i[ show row edit update destroy ]
+  before_action :prepare_calendar, only: :show
 
   def index
     @activities = activity_list
@@ -23,6 +26,10 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def calendar_scope
+    @activity.sessions
+  end
 
   def find_activity
     @activity = Activity.find(params[:id])

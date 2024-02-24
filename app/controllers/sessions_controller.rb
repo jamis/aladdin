@@ -1,0 +1,18 @@
+class SessionsController < ApplicationController
+  before_action :find_session, only: %i[ show ]
+
+  def create
+    @session = Session.create(session_params)
+    redirect_back_or_to root_url
+  end
+
+  private
+
+  def session_params
+    params.require(:session).permit(:activity_id, :occurred_on)
+  end
+
+  def find_session
+    @session = Session.find(params[:id])
+  end
+end

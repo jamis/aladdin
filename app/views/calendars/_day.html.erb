@@ -1,0 +1,18 @@
+<% colors = colors_for_date(date) %>
+<div data-controller="day" data-day-date-value="<%= date %>" data-action="click->day#select" class="border text-sm <%= colors[:bg] %> cursor-pointer">
+  <div class="<%= colors[:header_bg] %> px-2 py-1 border-b">
+    <% if show_month || date.day == 1 %>
+      <span><%= date.strftime("%b") %></span>
+    <% end %>
+    <span><%= date.strftime("%e") %></span>
+  </div>
+  <div class="px-2 py-1 min-h-20">
+    <% if @sessions && @sessions[date] %>
+      <ul class="flex flex-row gap-2 flex-wrap">
+        <% @sessions[date].each do |session| %>
+          <li><%= link_to session.activity.abbv, session_path(session), class: 'text-blue-600 underline' %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

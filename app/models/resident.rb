@@ -3,4 +3,8 @@ class Resident < ApplicationRecord
 
   scope :current, ->{ where(current: true) }
   scope :former, ->{ where(current: false) }
+
+  def former?
+    !current?
+  end
 end

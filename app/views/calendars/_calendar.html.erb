@@ -1,0 +1,52 @@
+<div data-controller="session-dialog" data-action="day:selected->session-dialog#activate">
+  <div class="flex flex-row gap-2">
+    <%= link_to '<< back 1 week', "?start=#{@start_week - 7}", class: 'text-blue-600 underline' %>
+    | <%= link_to 'today', "?start=#{Date.today.last_week}", class: 'text-blue-600 underline' %>
+    | <%= link_to 'forward 1 week >>', "?start=#{@start_week + 7}", class: 'text-blue-600 underline' %>
+  </div>
+
+  <div class="mt-4 mb-8">
+    <div class="grid grid-cols-7">
+      <div class="px-2 font-bold">Sun</div>
+      <div class="px-2 font-bold">Mon</div>
+      <div class="px-2 font-bold">Tue</div>
+      <div class="px-2 font-bold">Wed</div>
+      <div class="px-2 font-bold">Thu</div>
+      <div class="px-2 font-bold">Fri</div>
+      <div class="px-2 font-bold">Sat</div>
+
+      <% each_week @start_week, 5 do |week, start| %>
+        <%= render 'calendars/week', week: week, start: start %>
+      <% end %>
+    </div>
+  </div>
+
+  <div data-session-dialog-target="dialog" class="hidden">
+    <!-- cover the background -->
+    <div class="fixed top-0 left-0 w-full h-screen bg-black opacity-25"></div>
+
+    <!-- the dialog itself -->
+    <div class="fixed shadow-md border border-black rounded-lg w-1/2 left-1/4 top-20 overflow-hidden bg-white">
+      <header class="border-b border-black px-4 py-2 bg-gray-50 flex flex-row items-baseline">
+        <h1 class="text-lg font-bold">
+          New
+          <%= @activity.name if @activity %>
+          session for
+          <span data-session-dialog-target="date"></span>
+        </h1>
+        <a href='#' data-action="session-dialog#hide:prevent" class='text-blue-600 underline ml-auto'>close</a>
+      </header>
+      <main class="px-4 py-2">
+        <%= form_with model: session_model, data: { session_dialog_target: 'form' } do |f| %>
+          <%= f.hidden_field :occurred_on, data: { session_dialog_target: 'date' } %>
+          <% if @activity %>
+            <%= f.hidden_field :activity_id %>
+          <% else %>
+            Activity: <%= f.select :activity_id, activity_options, prompt: 'Choose an activity' %>
+          <% end %>
+          <%= f.submit 'Create this session', class: "ml-2 border border-green-600 bg-green-100 hover:bg-green-200 cursor-pointer px-2 py-1 rounded" %>
+        <% end %>
+      </main>
+    </div>
+  </div>
+</div>

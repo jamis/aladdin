@@ -1,0 +1,3 @@
+<% 7.times do |ofs| %>
+  <%= render 'calendars/day', show_month: ofs == 0 && week == 0, date: start + ofs %>
+<% end %>
