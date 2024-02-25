@@ -1,6 +1,13 @@
-<h1 class="text-2xl font-bold mb-4"><%= @session.activity.name %> - <%= @session.occurred_on %></h1>
+<header class="mb-4">
+  <h1 class="text-2xl font-bold"><%= @session.activity.name %> - <%= @session.occurred_on %></h1>
+  <% if @session.deletable? %>
+    <%= form_with model: @session, method: :delete do |f| %>
+      <%= f.submit 'Delete this session', class: 'text-red-600 underline cursor-pointer' %>
+    <% end %>
+  <% end %>
+</header>
 
-<table>
+<table data-controller="session" data-session-engagements-url-value="<%= engagements_path %>" data-session-session-value="<%= @session.id %>">
   <tr class="bg-gray-200 border-b border-black">
     <th class="text-left p-1">Name</th>
     <th class="p-1">Room</th>
@@ -10,7 +17,7 @@
   </tr>
 
   <% each_resident_with_engagement_for(@session) do |resident, engagement, index| %>
-    <tr class="<%= index.odd? ? 'bg-gray-100' : '' %>">
+    <tr data-resident="<%= resident.id %>" class="<%= index.odd? ? 'bg-gray-100' : '' %>">
       <td class="p-1">
         <%= resident.name %>
         <% if resident.former? %>
@@ -18,9 +25,9 @@
         <% end %>
       </td>
       <td class="text-center p-1"><%= resident.room %></td>
-      <td class="text-center p-1"><%= check_box_tag :invited, 1, engagement.invited? %></td>
-      <td class="text-center p-1"><%= check_box_tag :attended, 1, engagement.attended? %></td>
-      <td class="p-1"><%= text_field_tag :notes, engagement.notes, class: 'w-full px-2 py-1' %></td>
+      <td class="text-center p-1"><%= check_box_tag dom_id(resident, :invited), 1, engagement.invited?, data: { action: 'session#toggleInvited' } %></td>
+      <td class="text-center p-1"><%= check_box_tag dom_id(resident, :attended), 1, engagement.attended?, data: { action: 'session#toggleAttended' } %></td>
+      <td class="p-1"><%= text_field_tag dom_id(resident, :notes), engagement.notes, class: 'w-full px-2 py-1', data: { action: 'session#updateNotes' } %></td>
     </tr>
   <% end %>
 </table

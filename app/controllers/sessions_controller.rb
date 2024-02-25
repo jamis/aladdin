@@ -1,9 +1,14 @@
 class SessionsController < ApplicationController
-  before_action :find_session, only: %i[ show ]
+  before_action :find_session, only: %i[ show destroy ]
 
   def create
     @session = Session.create(session_params)
     redirect_back_or_to root_url
+  end
+
+  def destroy
+    @session.destroy if @session.deletable?
+    redirect_to root_url
   end
 
   private

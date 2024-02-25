@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resource :calendar
 
+  resources :engagements
+
   resources :residents do
     member do
       get 'row'
