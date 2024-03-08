@@ -27,6 +27,6 @@ module CalendarsHelper
   end
 
   def activity_options
-    Activity.all.map { |a| [ a.name, a.id ] }
+    Activity.active.by_name.map { |a| [ a.name, a.id ] }
   end
 end

@@ -4,6 +4,8 @@ class Activity < ApplicationRecord
   scope :active, ->{ where(archived_at: nil) }
   scope :archived, ->{ where.not(archived_at: nil) }
 
+  scope :by_name, -> { order(name: :asc) }
+
   def archived=(archived)
     converted = ActiveModel::Type::Boolean.new.cast(archived)
     archive!(converted ? Time.now : nil)
