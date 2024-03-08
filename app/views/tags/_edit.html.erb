@@ -1,0 +1,8 @@
+<li id="<%= dom_id(@tag) %>">
+  <%= form_with model: @tag, data: { turbo_stream: true } do |f| %>
+    <div class="my-2">
+      <%= f.text_field :name, placeholder: 'Tag name', class: 'px-2 py-1 rounded', autofocus: true %>
+      <%= f.submit 'Save', class: "border border-green-600 bg-green-100 hover:bg-green-200 cursor-pointer px-2 py-1 rounded" %>
+      or <%= link_to "cancel", tag_path(@tag), data: { turbo_stream: true }, class: 'text-red-600 underline' %>
+  <% end %>
+</li>

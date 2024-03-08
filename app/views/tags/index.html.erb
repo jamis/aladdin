@@ -1,0 +1,6 @@
+<h1 class="text-2xl font-bold">Tags</h1>
+<div><%= link_to "Add a new tag", new_tag_path, data: { turbo_stream: true }, class: "text-blue-600 underline" %></div>
+
+<ul id="tagList" class="my-4 list-disc ml-8">
+  <%= render Tag.by_name %>
+</ul>

@@ -1,0 +1,11 @@
+<li id="<%= dom_id(tag) %>" class="group hover:bg-yellow-50">
+  <%= tag.name %>
+  <span class="ml-2 invisible group-hover:visible">
+    [
+      <%= link_to 'edit', edit_tag_path(tag), data: { turbo_stream: true }, class: "text-blue-600 underline" %>
+      <%= form_with model: tag, method: :delete, class: "inline", data: { turbo_confirm: "Really delete the tag \"#{tag.name}\"? This can't be undone." } do |f| %>
+        | <%= f.submit 'delete', class: "text-red-600 underline" %>
+      <% end %>
+    ]
+  </span>
+</li>
