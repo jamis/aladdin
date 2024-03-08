@@ -44,6 +44,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:name, :abbv, :archived)
+    params.require(:activity).permit(:name, :abbv, :archived, :tag_list_json)
   end
 end

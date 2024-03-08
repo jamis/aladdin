@@ -1,4 +1,6 @@
 class Activity < ApplicationRecord
+  include Taggable
+
   has_many :sessions, dependent: :destroy
 
   scope :active, ->{ where(archived_at: nil) }

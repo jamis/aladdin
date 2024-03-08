@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_21_134903) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_08_000940) do
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
     t.string "abbv", null: false
@@ -29,15 +29,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_134903) do
     t.datetime "updated_at", null: false
     t.index ["resident_id"], name: "index_engagements_on_resident_id"
     t.index ["session_id"], name: "index_engagements_on_session_id"
-  end
-
-  create_table "goals", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "code", null: false
-    t.integer "parent_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["parent_id"], name: "index_goals_on_parent_id"
   end
 
   create_table "goals_sessions", id: false, force: :cascade do |t|
@@ -59,6 +50,23 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_134903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["activity_id"], name: "index_sessions_on_activity_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.string "taggable_type"
+    t.integer "taggable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
 end

@@ -3,6 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ 'dialog', 'date', 'form' ];
 
+  static outlets = [ 'tag-cloud' ];
+
+  static values = {
+    activityTags: Object
+  }
+
   connect() {
     this.formTarget.reset();
   }
@@ -28,5 +34,11 @@ export default class extends Controller {
         target.innerHTML = date;
       }
     })
+  }
+
+  activityChanged(event) {
+    const activityId = event.target.value;
+    const tags = this.activityTagsValue[activityId];
+    this.tagCloudOutlet.selectOnly(tags || []);
   }
 }

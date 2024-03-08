@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .bcal-tag {
+    @apply border rounded bg-gray-50 px-2 py-1 shadow;
+
+    &.selected {
+      @apply bg-green-100 border-green-300 shadow-inner pt-1.5 pb-0.5;
+    }
   }
 }
-
-*/

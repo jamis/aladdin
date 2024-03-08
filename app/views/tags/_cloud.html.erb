@@ -1,0 +1,15 @@
+<div class="bcal-tag-cloud flex flex-row flex-wrap gap-2 my-4 text-sm mx-4" data-controller="tag-cloud" data-tag-cloud-selected-class="selected" data-tag-cloud-tags-value="<%= Tag.by_name.names.to_json %>">
+  <%= form.hidden_field :tag_list_json, data: { tag_cloud_target: 'field' } %>
+  <template data-tag-cloud-target="template">
+    <div class="bcal-tag cursor-pointer" data-action="click->tag-cloud#toggle">
+      tag
+    </div>
+  </template>
+  <div class="border rounded bg-gray-50 px-2 py-1 shadow" data-tag-cloud-target="input">
+    <input type="text"
+           placeholder="new tag"
+           class="text-sm p-0 m-0 border-none focus:outline-none focus:ring-0 w-20 focus:border-green-800 bg-transparent placeholder-gray-300"
+           data-action="keydown.enter->tag-cloud#newTag:prevent"
+           />
+  </div>
+</div>

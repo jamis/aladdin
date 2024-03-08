@@ -23,7 +23,13 @@ module CalendarsHelper
   end
 
   def session_model
-    Session.new(activity: @activity)
+    Session.new(activity: @activity, tags: @activity&.tags || [])
+  end
+
+  def tags_by_activity
+    Activity.active.each_with_object({}) do |activity, map|
+      map[activity.id] = activity.tag_list
+    end
   end
 
   def activity_options

@@ -1,6 +1,7 @@
 class Session < ApplicationRecord
+  include Taggable
+
   belongs_to :activity
-  has_and_belongs_to_many :goals
   has_many :engagements, dependent: :destroy
 
   def deletable?
