@@ -1,0 +1,13 @@
+<h1 class="text-2xl font-bold">Import Residents</h1>
+
+<p class="my-4">
+  Select a CSV file containing the residents to import. The residents'
+  names must be in the first column; room numbers must be in the
+  second column. The table should not include a header row.
+</p>
+
+<%= form_with url: upload_residents_path, multipart: true do %>
+  File: <%= file_field_tag :residents %>
+  <%= submit_tag 'Import', class: "ml-2 border border-green-600 bg-green-100 hover:bg-green-200 cursor-pointer px-2 py-1 rounded" %>
+    or <%= link_to "cancel", residents_path, class: 'bcal-cancel' %>
+<% end %>

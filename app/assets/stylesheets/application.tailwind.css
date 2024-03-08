@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer components {
+  .bcal-link {
+    @apply text-blue-600 underline;
+  }
+
+  .bcal-cancel {
+    @apply text-red-600 underline;
+  }
+
   .bcal-tag {
     @apply border rounded bg-gray-50 px-2 py-1 shadow;
 

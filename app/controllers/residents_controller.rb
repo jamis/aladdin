@@ -11,6 +11,11 @@ class ResidentsController < ApplicationController
     @residents = resident_list
   end
 
+  def upload
+    Resident.import(params[:residents])
+    redirect_to residents_path
+  end
+
   def update
     @resident.update(resident_params)
 

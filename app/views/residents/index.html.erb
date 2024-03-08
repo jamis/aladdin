@@ -1,14 +1,17 @@
 <h1 class="text-2xl font-bold">Current Residents</h1>
-<div><%= link_to "Add a new resident", new_resident_path, data: { turbo_stream: true }, class: "text-blue-600 underline" %></div>
+<div>
+  <%= link_to "Add a new resident", new_resident_path, data: { turbo_stream: true }, class: "bcal-link" %>
+  | <%= link_to "Import a CSV", import_residents_path, class: "bcal-link" %>
+</div>
 
 <%= render 'list', residents: @residents, id: 'residentList' %>
 
 <div data-controller="show-hide" class="mt-4">
-  <div><a href="#" class="text-blue-600 underline" data-action="show-hide#toggle:prevent" data-show-hide-target="control">Show all former residents</a></div>
+  <div><a href="#" class="bcal-link" data-action="show-hide#toggle:prevent" data-show-hide-target="control">Show all former residents</a></div>
   <div class="hidden" data-show-hide-target="content">
     <div class="flex flex-row items-baseline">
       <h2 class="text-lg font-bold">Former Residents</h2>
-      <span class="ml-2">[ <a href='#' class="text-blue-600 underline" data-action="show-hide#toggle:prevent">hide</a> ]</span>
+      <span class="ml-2">[ <a href='#' class="bcal-link" data-action="show-hide#toggle:prevent">hide</a> ]</span>
     </div>
 
     <%= render 'list', residents: @former, id: 'formerResidentList' %>

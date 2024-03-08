@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     member do
       get 'row'
     end
+
+    collection do
+      get 'import'
+      post 'upload'
+    end
   end
 
   resources :sessions
