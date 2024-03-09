@@ -8,7 +8,7 @@ module CalendarsHelper
   end
 
   def colors_for_date(date)
-    today = Date.today
+    today = Time.zone.today
 
     if date < today
       { header_bg: 'bg-gray-200',
