@@ -1,7 +1,7 @@
-<div class="bcal-tag-cloud flex flex-row flex-wrap gap-2 my-4 text-sm mx-4" data-controller="tag-cloud" data-tag-cloud-selected-class="selected" data-tag-cloud-tags-value="<%= Tag.by_name.names.to_json %>">
+<div class="aladdin-tag-cloud flex flex-row flex-wrap gap-2 my-4 text-sm mx-4" data-controller="tag-cloud" data-tag-cloud-selected-class="selected" data-tag-cloud-tags-value="<%= Tag.by_name.names.to_json %>">
   <%= form.hidden_field :tag_list_json, data: { tag_cloud_target: 'field' } %>
   <template data-tag-cloud-target="template">
-    <div class="bcal-tag cursor-pointer" data-action="click->tag-cloud#toggle">
+    <div class="aladdin-tag cursor-pointer" data-action="click->tag-cloud#toggle">
       tag
     </div>
   </template>

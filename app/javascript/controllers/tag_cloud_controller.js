@@ -35,7 +35,7 @@ export default class extends Controller {
     this.fieldTarget.value = JSON.stringify(list);
     this.selectedTags = list;
 
-    this.element.querySelectorAll('.bcal-tag').forEach(node => {
+    this.element.querySelectorAll('.aladdin-tag').forEach(node => {
       let tag = node.dataset.tagCloudTagParam;
       if (list.includes(tag)) {
         node.classList.add(this.selectedClass);
